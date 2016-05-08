@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
 # Header_start
 #################################################################################
-#																				#
+#										#
 #   Bibliotheque de functions utiles à la creation de scripts et applications	#
-#   shell unix																	#
+#   shell unix									#
 # ----------------------------------------------------------------------------- #
-#   Author: Alfred TCHONDJO - Iriven France										#
-#   Date: 2016-02-13															#
+#   Author: Alfred TCHONDJO - Iriven France					#
+#   Date: 2016-02-13								#
 # ----------------------------------------------------------------------------- #
-#   Revisions																	#
-#																				#
-#   G1R0C0 : 	Creation du script le 13/02/2016 (AT)							#
+#   Revisions									#
+#										#
+#   G1R0C0 : 	Creation du script le 13/02/2016 (AT)				#
 # -----------------------------------------------------------------------------	#
-#	Function List																#
-#																				#
-#	arrayDiff	arrayIntersect	arrayKeys 	arrayMap 	arrayMerge	arraySize	#
-#	explode		functionExists	getMacAddr	getUid		inArray		IndexOf		#
-#	isAlpha		isAlphaNum		isBoolean	isNumeric	isRoot		isSet		#
-#	ltrim		pregMatch		rtrim		source		strCapitalize			#
-#	strContains	strLen			strRemove	strRemove	strToLower	strToUpper	#
-#	subString	trim			ucfirst		userExists							#
+#   Function List								#
+#										#
+#   arrayDiff  arrayIntersect  arrayKeys  arrayMap  arrayMerge  arraySize	#
+#   explode  functionExists  getMacAddr  getUid	  inArray	IndexOf		#
+#   isAlpha  isAlphaNum	  isBoolean  isNumeric  isRoot	isSet	ltrim		#
+#   pregMatch  rtrim  source  strCapitalize  strContains  strLen  strRemove	#
+#   strRemove  strToLower  strToUpper  subString  trim  ucfirst  userExists	#
 #################################################################################
 # Header_end
 # set -x
