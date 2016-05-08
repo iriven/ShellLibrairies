@@ -9,4 +9,3 @@ Function List
  - isAlpha - isAlphaNum - isBoolean - isNumeric - isRoot - isSet - ltrim 
  - pregMatch - rtrim - source - strCapitalize - strContains - strLen - strRemove 
  - strRemove - strToLower - strToUpper - subString - trim - ucfirst - userExists
-----------------------------------------------------------------------------------------
