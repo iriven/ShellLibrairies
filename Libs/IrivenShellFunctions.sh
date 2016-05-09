@@ -17,6 +17,7 @@
 #   isAlphaNum	  isBoolean  isNumeric	isRoot  isSet  ltrim  pregMatch  rtrim  #
 #   source  strCapitalize  strContains  strLength strPosition strRemove	        #
 #   strRemove  strLowerCase  strUpperCase  subString  trim  ucfirst userExists  #
+#   urlDecode  urlEncode                                                        #
 #################################################################################
 # Header_end
 # set -x
