@@ -7,5 +7,5 @@ Function List
  - arrayDiff - arrayIntersect - arrayKeys - arrayMap - arrayMerge - arraySize 
  - explode - functionExists - getMacAddr - getUid - inArray - IndexOf  
  - isAlpha - isAlphaNum - isBoolean - isNumeric - isRoot - isSet - ltrim 
- - pregMatch - rtrim - source - strCapitalize - strContains - strLen - strPosition - strRemove 
+ - pregMatch - rtrim - source - strCapitalize - strContains - strLength - strPosition - strRemove 
  - strRemove - strLowerCase - strUpperCase - subString - trim - ucfirst - userExists
