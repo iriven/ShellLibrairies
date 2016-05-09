@@ -9,3 +9,4 @@ Function List
  - isAlpha - isAlphaNum - isBoolean - isNumeric - isRoot - isSet - ltrim 
  - pregMatch - rtrim - source - strCapitalize - strContains - strLength - strPosition 
  - strRemove - strLowerCase - strUpperCase - subString - trim - ucfirst - userExists
+ - urlDecode - urlEncode
