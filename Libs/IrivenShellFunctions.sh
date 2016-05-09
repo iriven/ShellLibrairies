@@ -494,3 +494,27 @@ if ! functionExists "userExists" ; then
 		grep "^${username}:" /etc/passwd > /dev/null 2>&1 && return 0 || return 1
 	}
 fi
+#-------------------------------------------------------------------
+# decode une chaine au format url
+# @params: $string  , url encodée
+# @return: String
+#-------------------------------------------------------------------
+if ! functionExists "urDecode" ; then
+	function urDecode() {
+		[ $# -ne 1 -o -z "$1" ] && printf "Usage: ${0} [string URL]" && exit 1
+		local url="$1"
+		echo "${url}" | sed "s/%0A/\n/g;s/%22/\"/g;s/%28/\(/g;s/%29/\)/g;s/%26/\&/g;s/%3D/\=/g"
+	}
+fi
+#-------------------------------------------------------------------
+# encode une chaine au format url
+# @params: $string  , url à encoder
+# @return: String
+#-------------------------------------------------------------------
+if ! functionExists "urlEncode" ; then
+	function urlencode() {
+		[ $# -ne 1 -o -z "$1" ] && printf "Usage: ${0} [string URL]" && exit 1
+		local url="$1"
+		echo "${url}" | tr '\n' "^" | sed -e 's/%/%25/g;s/ /%20/g;s/!/%21/g;s/"/%22/g;s/#/%23/g;s/\$/%24/g;s/\&/%26/g;s/=/%3D/g;s/'\''/%27/g;s/(/%28/g;s/)/%29/g' -e "s/\^$//;s/\^/%0A/g"
+	}
+fi
