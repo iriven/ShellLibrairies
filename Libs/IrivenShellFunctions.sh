@@ -13,7 +13,7 @@
 #   G1R0C0 : 	Creation du script le 13/02/2016 (AT)				#
 # -----------------------------------------------------------------------------	#
 #   Function List				                                #										#							#   arrayDiff  arrayIntersect  arrayKeys  arrayMap  arrayMerge  arraySize	#
-#   explode  functionExists  getMacAddr	getUid	inArray  IndexOf  isAlpha	#
+#   explode executeAs functionExists getMacAddr getUid inArray IndexOf  isAlpha	#
 #   isAlphaNum	  isBoolean  isNumeric	isRoot  isSet  ltrim  pregMatch  rtrim  #
 #   source  strCapitalize  strContains  strLength strPosition strRemove	        #
 #   strRemove  strLowerCase  strUpperCase  subString  trim  ucfirst userExists  #
