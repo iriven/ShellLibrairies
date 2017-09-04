@@ -116,6 +116,25 @@ if ! functionExists "arraySize" ; then
 	}
 fi
 #-------------------------------------------------------------------
+# definie le nom utilisateur sous lequel un script doit être lancé
+# @params: $username  , nom utilisateur cible
+# @return: Boolean | Error
+#-------------------------------------------------------------------
+if ! functionExists "executeAs" ; then
+	function executeAs(){
+		[ $# -ne 1 -o -z "$1" ] && printf "Usage: ${0} [string USERNAME]" && exit 1
+		local USERNAME="$1"
+		local WHOAMI=`whoami`
+		case "${USERNAME}" in
+    	        "${WHOAMI}")
+                     return 0;;
+                *)
+                     echo "Veuillez executer le script avec l'utilisateur \"${USERNAME}\"" 
+                     exit 1;;
+               esac
+	}
+fi
+#-------------------------------------------------------------------
 # Transforme une chaine de caracteres en tableau suivant 
 # @params: $string  , chaine à convertir
 # @params: $delimiter  , (optionnel) delimiteur
