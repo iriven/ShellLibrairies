@@ -5,7 +5,7 @@ Bibliotheque de functions utiles à la creation de scripts et applications shell
 Function List        
 
  - arrayDiff - arrayIntersect - arrayKeys - arrayMap - arrayMerge - arraySize 
- - explode - functionExists - getMacAddr - getUid - inArray - IndexOf  
+ - explode - executeAs - functionExists - getMacAddr - getUid - inArray - IndexOf  
  - isAlpha - isAlphaNum - isBoolean - isNumeric - isRoot - isSet - ltrim 
  - pregMatch - rtrim - source - strCapitalize - strContains - strLength - strPosition 
  - strRemove - strLowerCase - strUpperCase - subString - trim - ucfirst - userExists
