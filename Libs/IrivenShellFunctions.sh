@@ -519,8 +519,8 @@ fi
 # @params: $string  , url encodée
 # @return: String
 #-------------------------------------------------------------------
-if ! functionExists "urDecode" ; then
-	function urDecode() {
+if ! functionExists "urlDecode" ; then
+	function urlDecode() {
 		[ $# -ne 1 -o -z "$1" ] && printf "Usage: ${0} [string URL]" && exit 1
 		local url="$1"
 		echo "${url}" | sed "s/%0A/\n/g;s/%22/\"/g;s/%28/\(/g;s/%29/\)/g;s/%26/\&/g;s/%3D/\=/g"
