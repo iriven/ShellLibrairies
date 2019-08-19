@@ -538,3 +538,24 @@ if ! functionExists "urlEncode" ; then
 		echo "${url}" | tr '\n' "^" | sed -e 's/%/%25/g;s/ /%20/g;s/!/%21/g;s/"/%22/g;s/#/%23/g;s/\$/%24/g;s/\&/%26/g;s/=/%3D/g;s/'\''/%27/g;s/(/%28/g;s/)/%29/g' -e "s/\^$//;s/\^/%0A/g"
 	}
 fi
+
+#-------------------------------------------------------------------
+# Desactive l'interface reseaux
+# retourne l'ID du user actuel
+# @params: $username  , nom de l'utilisateur cible
+# @echo: Number
+#-------------------------------------------------------------------
+if ! functionExists "disableNetworkInterface" ; then
+function disableNetworkInterface(){
+[ $# -ne 1 -o -z "$1" ] && printf "Usage: disableNetworkInterface [string <INTERFACE>]" && exit 1
+local interface=$(echo "${1}"|tr '[A-Z]' '[a-z]')
+local configFile="/etc/sysconfig/network-scripts/ifcfg-${interface}"
+if [ ! -f ${configFile} ] ; then
+	echo "${interface} n'est pas une interface réseau" 
+	exit 1;
+fi
+sed -i -e 's/^[[:space:]]*\(onboot*\)=\(.*\)$/\1=no/Ig' ${configFile}
+ip link set ${interface} down 2>/dev/null 2>&1
+echo 1 > $(find /sys/devices -name "*${interface}" | sed -e "s,/net/${interface},/remove,")
+}
+fi
