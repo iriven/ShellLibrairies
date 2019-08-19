@@ -40,3 +40,4 @@ Function List
  - userExists
  - urlDecode 
  - urlEncode
+ - disableNetworkInterface
