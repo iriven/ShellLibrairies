@@ -539,23 +539,30 @@ if ! functionExists "urlEncode" ; then
 	}
 fi
 
-#-------------------------------------------------------------------
-# Desactive l'interface reseaux
-# retourne l'ID du user actuel
-# @params: $username  , nom de l'utilisateur cible
-# @echo: Number
+#--------------------------------------------------------------------------
+# Desactive une interface sans avoir besoin de relance le service reseaux 
+# @params: $ifname  , nom de l'interface cible
+# @return: void
 #-------------------------------------------------------------------
 if ! functionExists "disableNetworkInterface" ; then
-function disableNetworkInterface(){
-[ $# -ne 1 -o -z "$1" ] && printf "Usage: disableNetworkInterface [string <INTERFACE>]" && exit 1
-local interface=$(echo "${1}"|tr '[A-Z]' '[a-z]')
-local configFile="/etc/sysconfig/network-scripts/ifcfg-${interface}"
-if [ ! -f ${configFile} ] ; then
-	echo "${interface} n'est pas une interface réseau" 
-	exit 1;
-fi
-sed -i -e 's/^[[:space:]]*\(onboot*\)=\(.*\)$/\1=no/Ig' ${configFile}
-ip link set ${interface} down 2>/dev/null 2>&1
-echo 1 > $(find /sys/devices -name "*${interface}" | sed -e "s,/net/${interface},/remove,")
-}
+    function disableNetworkInterface(){
+      [ $# -ne 1 -o -z "$1" ] && printf "Usage: $FUNCNAME [string <INTERFACE>]" && exit 1
+      local interface=$(echo "${1}"|tr '[A-Z]' '[a-z]')
+      local configFile="/etc/sysconfig/network-scripts/ifcfg-${interface}"
+      if [ ! -f ${configFile} ] ; then
+        echo "${interface} n'est pas une interface réseau" 
+        exit 1;
+      fi
+      local OSVersion=$(cat /etc/*-release | sed 's/\"//g' | awk -F= '/^VERSION=/ { print $NF;}'|awk '{ print $1;}'| awk -F. '{ print $1;}')
+      sed -i -e 's/^[[:space:]]*\(onboot*\)=\(.*\)$/\1=no/Ig' ${configFile}
+      if [ "${OSVersion}" -lt 6 ] ; then
+        ifconfig ${interface} down 2>/dev/null 2>&1
+        local driver="$(ethtool -i ${interface}| grep '^driver:' | awk '{ print $2 }')"
+        local bus="$(ethtool -i ${interface} | grep '^bus-info:' | awk '{ print $2 }')"
+        echo "$bus" > /sys/bus/pci/drivers/${driver}/unbind        
+      else
+        ip link set ${interface} down 2>/dev/null 2>&1
+        echo 1 > $(find /sys/devices -name "*${interface}" | sed -e "s,/net/${interface},/remove,")
+      fi
+    }
 fi
